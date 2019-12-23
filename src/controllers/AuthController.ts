@@ -11,9 +11,8 @@ class AuthController {
 
   login = async (req: Request, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
-
     if (!username && !password) {
-      res.status(400).send({ alo: 'alo' });
+      res.status(400).send();
       return;
     }
 
