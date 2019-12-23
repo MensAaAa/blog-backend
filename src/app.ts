@@ -5,6 +5,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 
 import routes from './api';
+import logger from './logger';
 
 createConnection().then(connection => {
   const app: Application = express();
@@ -13,6 +14,7 @@ createConnection().then(connection => {
   app.use(bodyParser.json());
   app.use(helmet())
   app.use(cors());
+  app.use(logger)
   app.use('/', routes);
 
   app.listen(PORT)

@@ -6,13 +6,8 @@ import { User } from "../entity/User";
 export default class AuthService {
   async findUserByUsername(username: string) {
     const userRepository = getRepository(User);
-
-    try {
-      const user = await userRepository.findOneOrFail({ username });
-      return user;
-    } catch (error) {
-      throw error;
-    }
+    const user = await userRepository.findOneOrFail({ username });
+    return user;
   }
 
   async checkIsPasswordValid(user: User, password: string) {
