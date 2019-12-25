@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { Length, MaxLength} from 'class-validator';
+import { Length, MaxLength } from 'class-validator';
 
 @Entity()
 export class Post {
@@ -11,6 +11,7 @@ export class Post {
   title: string;
 
   @Column()
+  @Length(4, 5000)
   @MaxLength(5000)
   content: string;
 
@@ -18,7 +19,7 @@ export class Post {
   @Length(4, 20)
   path: string;
 
-  @Column()
+  @Column({ default: true })
   views: number;
 
   @Column()
