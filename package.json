@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon src/app.ts",
     "start": "npm run build && ts-node build/app.js",
     "build": "tsc",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
