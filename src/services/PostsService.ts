@@ -19,7 +19,9 @@ export default class PostsService {
 
   async getPostByPath(path: string): Promise<Post | undefined> {
     this.postRepository = getRepository(Post);
-    return await this.postRepository.findOne({ path });
+    const post = await this.postRepository.findOne({ path });
+    await this.incrementViews(post);
+    return post;
   }
 
   async deletePost(id: number) {
@@ -29,6 +31,12 @@ export default class PostsService {
 
   async updatePost(post: any): Promise<Post> {
     this.postRepository = getRepository(Post);
+    return await this.postRepository.save(post);
+  }
+
+  async incrementViews(post: any): Promise<Post> {
+    this.postRepository = getRepository(Post);
+    post.views += 1;
     return await this.postRepository.save(post);
   }
 }
