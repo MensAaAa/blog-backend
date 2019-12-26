@@ -9,7 +9,7 @@ import logger from './logger';
 
 createConnection().then(connection => {
   const app: Application = express();
-  const PORT = process.env.PORT;
+  const PORT = process.env.PORT || 4000;
 
   app.use(bodyParser.json());
   app.use(helmet())
