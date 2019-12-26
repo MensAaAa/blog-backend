@@ -17,7 +17,7 @@ createConnection().then(connection => {
   app.use(logger)
   app.use('/', routes);
 
-  app.listen(PORT)
+  app.listen(PORT, () => console.log('Started on port: ' + PORT))
 }).catch(err => console.log(err))
 
 
